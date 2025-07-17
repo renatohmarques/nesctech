@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nesctech - Nossa Gente</title>
+    <!-- Importa a fonte Lato do Google Fonts para um visual moderno e legível -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome para os ícones dos serviços -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Variáveis de Cores e Fontes para facilitar a personalização */
+        :root {
+            --nesctech-primary-blue: #002D62; /* Azul escuro principal da Nesctech */
+            --nesctech-logo-blue: #002D62; /* Cor do logo */
+
+            --nesctech-text-light: #ffffff; /* Texto claro */
+            --section-bg-light: #f9f9f9; /* Fundo claro para seções de conteúdo */
+            --color-dark-text: #2a2a2a; /* Texto escuro geral */
+            --color-heading-text: #1a1a1a; /* Títulos de seção */
+            --color-link-text: #333333; /* Links do menu */
+            --color-link-hover: var(--nesctech-primary-blue); /* Links do menu ao passar o mouse */
+
+            --card-bg: #ffffff; /* Fundo dos cards de serviço */
+            --card-border: #e0e0e0; /* Borda sutil dos cards */
+            --card-shadow-soft: rgba(0, 0, 0, 0.08); /* Sombra dos cards */
+            --card-shadow-hover: rgba(0, 0, 0, 0.15); /* Sombra ao passar o mouse */
+
+            --footer-bg: #1a1a1a; /* Fundo do rodapé */
+            --footer-text: #cccccc; /* Texto do rodapé */
+
+            --font-family-base: "Lato", sans-serif;
+
+            --bling-green: #4CAF50; /* Verde de destaque similar ao Bling */
+            --bling-light-blue: #E3F2FD; /* Azul claro para fundos de seções */
+            --bling-dark-green: #2E7D32; /* Verde mais escuro para balão de destaque */
+        }
+
+        /* Reset CSS abrangente */
+        * {
+            box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura total */
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%; /* Garante que body e html ocupem 100% da altura da viewport */
+            overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+            overflow-y: auto; /* Permite rolagem vertical quando necessário */
+            font-family: var(--font-family-base);
+            line-height: 1.6;
+            color: var(--color-dark-text);
+            display: flex; /* Define o body como um contêiner flex */
+            flex-direction: column; /* Organiza os filhos em coluna */
+            min-height: 100vh; /* Garante que o body ocupe no mínimo 100% da altura da viewport */
+        }
+
+        /* Container centralizado para conteúdo */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===================================================================== */
+        /* ==================== HEADER (CABEÇALHO) =========================== */
+        /* ===================================================================== */
+
+        .nesctech-header {
+            background-color: var(--nesctech-text-light);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: sticky; /* Fixa o header no topo ao rolar */
+            top: 0;
+            z-index: 1000; /* Garante que fique acima de outros elementos */
+        }
+
+        .nesctech-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--nesctech-logo-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nesctech-logo img {
+            height: 45px; /* Ajustado para caber no header, mantendo proporção */
+            width: auto; /* Permite que a largura se ajuste automaticamente */
+            max-width: 150px; /* Limita a largura máxima para logos muito grandes */
+            margin-right: 8px;
+            object-fit: contain;
+        }
+
+        .nesctech-nav-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px; /* Espaçamento entre os itens do menu */
+        }
+
+        .nesctech-nav-menu ul li a {
+            text-decoration: none;
+            color: var(--color-link-text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            white-space: nowrap; /* Evita quebra de linha em itens do menu */
+        }
+
+        .nesctech-nav-menu ul li a:hover,
+        .nesctech-nav-menu ul li a.active {
+            color: var(--color-link-hover);
+        }
+
+        .nesctech-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Espaço entre Login e WhatsApp */
+        }
+
+        .nesctech-login-btn {
+            background-color: transparent;
+            border: 1px solid var(--nesctech-primary-blue);
+            color: var(--nesctech-primary-blue);
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nesctech-login-btn:hover {
+            background-color: var(--nesctech-primary-blue);
+            color: var(--nesctech-text-light);
+        }
+
+        .nesctech-whatsapp-btn {
+            background-color: #25D366; /* Cor do WhatsApp */
+            color: var(--nesctech-text-light);
+            border-radius: 50%; /* Botão redondo */
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .nesctech-whatsapp-btn:hover {
+            background-color: #1DA851;
+            transform: translateY(-2px);
+        }
+
+        /* ===================================================================== */
+        /* ==================== SEÇÃO HERO (NOSSA GENTE) ===================== */
+        /* ===================================================================== */
+
+        .nossa-gente-hero-section {
+            background-color: var(--nesctech-primary-blue); /* Fundo azul escuro, similar à homepage */
+            color: var(--nesctech-text-light);
+            padding: 80px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden; /* Para garantir que a imagem não vaze */
+        }
+
+        .nossa-gente-hero-content {
+            max-width: 1300px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Espaço entre texto e imagem */
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            z-index: 1; /* Garante que o conteúdo fique acima da imagem de fundo se houver */
+        }
+
+        /* Estilo para o balão "Nossa Gente" */
+        .nossa-gente-tag-bubble {
+            background-color: var(--bling-green); /* Verde de destaque */
+            color: var(--nesctech-text-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            position: absolute;
+            top: -40px; /* Ajuste a posição vertical */
+            left: 20px; /* Ajuste a posição horizontal */
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            white-space: nowrap; /* Evita quebra de linha */
+        }
+        /* Pequeno triângulo para o balão */
+        .nossa-gente-tag-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; /* Posição do triângulo */
+            left: 20px; /* Alinha com o texto */
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid var(--bling-green);
+        }
+
+        .nossa-gente-hero-text {
+            flex: 1;
+            min-width: 300px;
+            max-width: 60%; /* Ocupa mais espaço para o texto */
+            text-align: left;
+            padding-right: 20px;
+        }
+
+        .nossa-gente-hero-text h1 {
+            font-size: 3.8rem; /* Grande, como na homepage */
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--nesctech-text-light);
+        }
+
+        .nossa-gente-hero-text p {
+            font-size: 1.3rem; /* Grande, como na homepage */
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: var(--nesctech-text-light);
+        }
+
+        .nossa-gente-hero-text .cta-button {
+            display: inline-block;
+            background-color: var(--bling-green); /* Botão verde de destaque */
+            color: var(--nesctech-text-light);
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .nossa-gente-hero-text .cta-button:hover {
+            background-color: var(--bling-dark-green);
+            transform: translateY(-2px);
+        }
+
+        .nossa-gente-hero-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 40%; /* Ocupa menos espaço para a imagem */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nossa-gente-hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* ===================================================================== */
+        /* ==================== SEÇÕES DE CONTEÚDO (NARRATIVA) ================ */
+        /* ===================================================================== */
+
+        .services-section { /* Classe base para seções de conteúdo */
+            background-color: var(--card-bg); /* Fundo branco */
+            padding: 80px 20px;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .services-section h2 {
+            font-size: 2.2rem; /* Tamanho da fonte do título da seção */
+            font-weight: 700;
+            color: var(--color-heading-text);
+            margin-bottom: 60px; /* Mais espaço para o título */
+            text-transform: uppercase;
+        }
+
+        .narrative-block {
+            display: flex;
+            flex-wrap: wrap; /* Permite quebra de linha para responsividade */
+            align-items: center;
+            justify-content: center;
+            gap: 40px; /* Espaçamento entre texto e imagem */
+            margin-bottom: 80px; /* Espaçamento entre os blocos narrativos */
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .narrative-block:last-child {
+            margin-bottom: 0; /* Remove margem do último bloco */
+        }
+
+        .narrative-content {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .narrative-content h3 {
+            font-size: 2rem; /* Título da narrativa */
+            font-weight: 700;
+            color: var(--color-heading-text);
+            margin-bottom: 15px;
+        }
+
+        .narrative-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--color-dark-text);
+            margin-bottom: 20px;
+        }
+
+        .narrative-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .narrative-content ul li {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .narrative-content ul li i {
+            margin-right: 10px;
+            color: var(--nesctech-primary-blue);
+            font-size: 1.2em;
+            margin-top: 3px; /* Ajuste fino para alinhar o ícone com o texto */
+        }
+
+        .narrative-content .cta-link {
+            display: inline-block;
+            color: var(--nesctech-primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+
+        .narrative-content .cta-link:hover {
+            color: var(--color-link-hover);
+            text-decoration: underline;
+        }
+
+        .narrative-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .narrative-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Alternar ordem da imagem e texto */
+        .narrative-block.image-left .narrative-content {
+            order: 2;
+        }
+        .narrative-block.image-left .narrative-image {
+            order: 1;
+        }
+
+        /* ===================================================================== */
+        /* ==================== SEÇÃO COMO CONTRATAMOS ======================= */
+        /* ===================================================================== */
+        .how-we-hire-section {
+            background-color: var(--bling-light-blue); /* Fundo claro para esta seção */
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .how-we-hire-section h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--color-heading-text);
+            margin-bottom: 60px;
+            text-transform: uppercase;
+        }
+
+        .how-we-hire-block {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: left;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .how-we-hire-block h3 {
+            font-size: 1.8rem;
+            color: var(--nesctech-primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .how-we-hire-block ol, .how-we-hire-block ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        .how-we-hire-block ol li, .how-we-hire-block ul li {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1 1 auto; /* Permite que os itens cresçam e encolham */
+            min-width: 100px; /* Largura mínima para cada item */
+            max-width: 150px; /* Largura máxima para cada item */
+        }
+
+        .step-item i {
+            font-size: 2.5rem;
+            color: var(--bling-green);
+            margin-bottom: 10px;
+        }
+
+        .step-item span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-dark-text);
+        }
+
+        .process-steps .fas.fa-arrow-right {
+            font-size: 1.5rem;
+            color: #ccc;
+            margin: 0 5px;
+        }
+        
+        .how-we-hire-block .note {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* ===================================================================== */
+        /* ==================== SEÇÃO PERGUNTAS FREQUENTES =================== */
+        /* ===================================================================== */
+        .faq-section {
+            background-color: var(--section-bg-light);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .faq-section h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--color-heading-text);
+            margin-bottom: 60px;
+            text-transform: uppercase;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .faq-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden; /* Para esconder a resposta */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .faq-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--nesctech-primary-blue);
+            padding: 18px 25px;
+            margin: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-item h3:hover {
+            background-color: #f0f0f0;
+        }
+
+        .faq-item h3 i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active h3 i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            padding: 0 25px;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            background-color: #fdfdfd;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px; /* Valor grande o suficiente para expandir */
+            padding: 15px 25px 25px;
+        }
+
+        .faq-answer p {
+            font-size: 0.95rem;
+            color: var(--color-dark-text);
+            margin-bottom: 10px;
+        }
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        .call-to-action-block {
+            background-color: var(--nesctech-primary-blue);
+            color: var(--nesctech-text-light);
+            padding: 50px 20px;
+            border-radius: 10px;
+            margin-top: 60px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .call-to-action-block h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--nesctech-text-light);
+        }
+
+        .call-to-action-block p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .call-to-action-block .cta-button {
+            background-color: var(--bling-green);
+            color: var(--nesctech-text-light);
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .call-to-action-block .cta-button:hover {
+            background-color: var(--bling-dark-green);
+            transform: translateY(-2px);
+        }
+
+
+        /* ===================================================================== */
+        /* ==================== FOOTER (RODAPÉ) ============================== */
+        /* ===================================================================== */
+
+        .nesctech-footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: auto; /* Empurra o rodapé para o final da página */
+        }
+
+        .nesctech-footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* ===================================================================== */
+        /* ==================== RESPONSIVIDADE GERAL ========================= */
+        /* ===================================================================== */
+
+        @media (max-width: 1024px) {
+            .nesctech-header {
+                padding: 15px 20px;
+            }
+            .nesctech-nav-menu ul {
+                gap: 20px;
+            }
+            .nossa-gente-hero-section {
+                padding: 60px 20px;
+            }
+            .nossa-gente-hero-content {
+                flex-direction: column; /* Coluna em telas menores */
+                text-align: center;
+            }
+            .nossa-gente-hero-text {
+                max-width: 90%;
+                text-align: center;
+                padding-right: 0;
+            }
+            .nossa-gente-hero-image {
+                max-width: 90%;
+            }
+            .nossa-gente-hero-text h1 {
+                font-size: 3rem;
+            }
+            .nossa-gente-hero-text p {
+                font-size: 1.2rem;
+            }
+            .nossa-gente-tag-bubble {
+                top: -30px; /* Ajuste para telas menores */
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .nossa-gente-tag-bubble::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .services-section {
+                padding: 60px 20px;
+            }
+            .services-section h2 {
+                font-size: 2rem; /* Ajuste para telas menores */
+                margin-bottom: 40px;
+            }
+            .narrative-block {
+                flex-direction: column; /* Coluna em telas menores */
+                margin-bottom: 60px;
+            }
+            .narrative-block.image-left .narrative-content {
+                order: 1; /* Volta a ordem padrão em coluna */
+            }
+            .narrative-block.image-left .narrative-image {
+                order: 2; /* Volta a ordem padrão em coluna */
+            }
+            .narrative-content {
+                max-width: 90%;
+                text-align: center;
+            }
+            .narrative-image {
+                max-width: 90%;
+            }
+            .narrative-content h3 {
+                font-size: 1.8rem;
+            }
+            .narrative-content p {
+                font-size: 1rem;
+            }
+            .narrative-content ul li {
+                font-size: 1rem;
+                justify-content: center; /* Centraliza itens da lista */
+            }
+            .how-we-hire-block {
+                padding: 25px;
+            }
+            .how-we-hire-block h3 {
+                font-size: 1.6rem;
+            }
+            .process-steps {
+                flex-direction: column; /* Coluna em telas menores */
+                align-items: center;
+            }
+            .process-steps .fas.fa-arrow-right {
+                transform: rotate(90deg); /* Seta para baixo */
+                margin: 10px 0;
+            }
+            .faq-item h3 {
+                font-size: 1rem;
+                padding: 15px 20px;
+            }
+            .faq-answer {
+                padding: 10px 20px 20px;
+            }
+            .faq-answer p {
+                font-size: 0.9rem;
+            }
+            .call-to-action-block h2 {
+                font-size: 2rem;
+            }
+            .call-to-action-block p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nesctech-header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+            .nesctech-nav-menu {
+                width: 100%;
+                margin-top: 15px;
+            }
+            .nesctech-nav-menu ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .nesctech-header-actions {
+                margin-top: 15px;
+                width: 100%;
+                justify-content: center;
+            }
+            .nesctech-login-btn {
+                flex-grow: 1;
+                text-align: center;
+            }
+            .nossa-gente-hero-section {
+                padding: 40px 15px;
+            }
+            .nossa-gente-hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .nossa-gente-hero-text p {
+                font-size: 1.1rem;
+            }
+            .nossa-gente-hero-text .cta-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            .services-section {
+                padding: 40px 15px;
+            }
+            .services-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+            .narrative-block {
+                gap: 30px;
+                margin-bottom: 50px;
+            }
+            .narrative-content h3 {
+                font-size: 1.6rem;
+            }
+            .narrative-content p {
+                font-size: 0.95rem;
+            }
+            .how-we-hire-block {
+                padding: 20px;
+            }
+            .how-we-hire-block h3 {
+                font-size: 1.4rem;
+            }
+            .process-steps {
+                gap: 10px;
+            }
+            .step-item {
+                min-width: 80px;
+                max-width: 120px;
+            }
+            .step-item i {
+                font-size: 2rem;
+            }
+            .step-item span {
+                font-size: 0.85rem;
+            }
+            .faq-item h3 {
+                font-size: 0.95rem;
+            }
+            .call-to-action-block h2 {
+                font-size: 1.8rem;
+            }
+            .call-to-action-block p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nesctech-logo {
+                font-size: 1.5rem;
+            }
+            .nesctech-nav-menu ul {
+                gap: 10px;
+                font-size: 0.85rem;
+            }
+            .nossa-gente-hero-section {
+                padding: 30px 10px;
+            }
+            .nossa-gente-hero-text h1 {
+                font-size: 2rem;
+            }
+            .nossa-gente-hero-text p {
+                font-size: 0.9rem;
+            }
+            .services-section {
+                padding: 30px 10px;
+            }
+            .services-section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 25px;
+            }
+            .narrative-block {
+                gap: 20px;
+                margin-bottom: 40px;
+            }
+            .narrative-content h3 {
+                font-size: 1.4rem;
+            }
+            .narrative-content p {
+                font-size: 0.85rem;
+            }
+            .narrative-content ul li {
+                font-size: 0.85rem;
+            }
+            .how-we-hire-block {
+                padding: 15px;
+            }
+            .how-we-hire-block h3 {
+                font-size: 1.2rem;
+            }
+            .process-steps {
+                flex-direction: column; /* Garante coluna em telas muito pequenas */
+            }
+            .process-steps .fas.fa-arrow-right {
+                transform: rotate(90deg);
+            }
+            .step-item {
+                min-width: unset;
+                max-width: 100%;
+            }
+            .step-item i {
+                font-size: 1.8rem;
+            }
+            .step-item span {
+                font-size: 0.8rem;
+            }
+            .faq-item h3 {
+                font-size: 0.85rem;
+                padding: 12px 15px;
+            }
+            .faq-answer {
+                padding: 8px 15px 15px;
+            }
+            .faq-answer p {
+                font-size: 0.8rem;
+            }
+            .call-to-action-block h2 {
+                font-size: 1.5rem;
+            }
+            .call-to-action-block p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- ==================== HEADER (CABEÇALHO) ==================== -->
+        <header class="nesctech-header">
+            <a href="../index.html" class="nesctech-logo">
+                <img src="../assets/img/logo/logo.png" alt="Nesctech Logo" width="320" height="132">
+            </a>
+            <nav class="nesctech-nav-menu">
+                <ul>
+                    <li><a href="para-voce.html">PARA VOCÊ</a></li>
+                    <li><a href="para-seu-negocio.html">PARA SEU NEGÓCIO</a></li>
+                    <li><a href="agro.html">AGRO</a></li>
+                    <li><a href="corporate.html">CORPORATE</a></li>
+                    <li><a href="setor-publico.html">SETOR PÚBLICO</a></li>
+                    <li><a href="nossa-gente.html">NOSSA GENTE</a></li>
+                    <li><a href="contato.html">CONTATO</a></li>
+                </ul>
+            </nav>
+            <div class="nesctech-header-actions">
+                <a href="login.html" class="nesctech-login-btn">LOGIN</a>
+                <a href="https://wa.me/5594974007800" target="_blank" class="nesctech-whatsapp-btn" aria-label="Fale conosco pelo WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- ==================== SEÇÃO HERO (NOSSA GENTE) ==================== -->
+        <section class="nossa-gente-hero-section">
+            <div class="nossa-gente-hero-content container">
+                <!-- Balão "Nossa Gente" -->
+                <div class="nossa-gente-tag-bubble">Nossa Gente</div>
+                
+                <div class="nossa-gente-hero-text">
+                    <h1>Quem é a Nesctech?</h1>
+                    <p>A Nesctech é uma empresa inovadora dedicada a transformar o cenário tecnológico, oferecendo soluções de ponta que impulsionam o sucesso de nossos clientes e parceiros. Somos mais do que um provedor de serviços; somos um catalisador de crescimento e inovação.</p>
+                    <a href="#nossa-essencia" class="cta-button">Conheça Nossa Essência</a>
+                </div>
+                <div class="nossa-gente-hero-image">
+                    <!-- Placeholder para imagem de destaque da seção Nossa Gente -->
+                    <!-- Sugestão: Uma imagem que represente a equipe Nesctech trabalhando em conjunto, colaboração, pessoas sorrindo em um ambiente moderno. -->
+                    <img src="../assets/img/misc/nossa_gente_hero.webp" alt="Equipe Nesctech trabalhando em conjunto">
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SEÇÃO NOSSA ESSÊNCIA ==================== -->
+        <section id="nossa-essencia" class="nossa-essencia-section services-section">
+            <h2>Nossa Essência</h2>
+            
+            <!-- Bloco de Narrativa: Sobre a Nesctech (Imagem Direita) -->
+            <div class="narrative-block">
+                <div class="narrative-content">
+                    <h3>Sobre a Nesctech</h3>
+                    <p>Fundada com a visão de simplificar e otimizar processos através da tecnologia, a Nesctech cresceu e se consolidou como uma referência no mercado. Nosso foco é desenvolver soluções inteligentes e escaláveis que atendam às necessidades de um mundo em constante evolução, ajudando empresas e indivíduos a alcançarem seus objetivos com eficiência e inovação.</p>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Sobre a Nesctech" -->
+                    <img src="../assets/img/misc/about_nesctech.webp" alt="Escritório moderno da Nesctech">
+                </div>
+            </div>
+
+            <!-- Bloco de Narrativa: Nossa Visão (Imagem Esquerda) -->
+            <div class="narrative-block image-left">
+                <div class="narrative-content">
+                    <h3>Nossa Visão</h3>
+                    <p>Ser a principal referência em soluções tecnológicas integradas, reconhecida pela excelência, inovação contínua e pelo impacto positivo que geramos na vida das pessoas e no desenvolvimento dos negócios, moldando o futuro digital.</p>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Nossa Visão" -->
+                    <img src="../assets/img/misc/our_vision.webp" alt="Pessoas olhando para um horizonte tecnológico">
+                </div>
+            </div>
+
+            <!-- Bloco de Narrativa: Nossa Missão (Imagem Direita) -->
+            <div class="narrative-block">
+                <div class="narrative-content">
+                    <h3>Nossa Missão</h3>
+                    <p>Desenvolver e entregar soluções tecnológicas inteligentes e escaláveis que simplificam processos, otimizam recursos e criam valor sustentável para nossos clientes, colaboradores e a sociedade, sempre com agilidade e paixão pela inovação.</p>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Nossa Missão" -->
+                    <img src="../assets/img/misc/our_mission.webp" alt="Mãos colaborando em um projeto de tecnologia">
+                </div>
+            </div>
+
+            <!-- Bloco de Narrativa: Nossos Valores (Imagem Esquerda) -->
+            <div class="narrative-block image-left">
+                <div class="narrative-content">
+                    <h3>Nossos Valores</h3>
+                    <ul>
+                        <li><i class="fas fa-lightbulb"></i> <strong>Inovação:</strong> Buscamos constantemente novas ideias e tecnologias.</li>
+                        <li><i class="fas fa-award"></i> <strong>Excelência:</strong> Comprometimento com a qualidade e melhoria contínua.</li>
+                        <li><i class="fas fa-handshake"></i> <strong>Colaboração:</strong> Acreditamos no trabalho em equipe e respeito mútuo.</li>
+                        <li><i class="fas fa-balance-scale"></i> <strong>Integridade:</strong> Agimos com ética, transparência e responsabilidade.</li>
+                        <li><i class="fas fa-user-tie"></i> <strong>Foco no Cliente:</strong> Colocamos as necessidades do cliente no centro das ações.</li>
+                        <li><i class="fas fa-tachometer-alt"></i> <strong>Agilidade:</strong> Respondemos rapidamente a mudanças e desafios.</li>
+                    </ul>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Nossos Valores" -->
+                    <img src="../assets/img/misc/our_values.webp" alt="Pessoas diversas em um ambiente de trabalho colaborativo">
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SEÇÃO INCLUSÃO E DIVERSIDADE ==================== -->
+        <section class="diversity-section services-section">
+            <h2>Inclusão e Diversidade na Nesctech!</h2>
+            
+            <!-- Bloco de Narrativa: Nosso Compromisso com a Diversidade (Imagem Direita) -->
+            <div class="narrative-block">
+                <div class="narrative-content">
+                    <h3>Nosso Compromisso com a Diversidade</h3>
+                    <p>Na Nesctech, a diversidade é um dos nossos valores fundamentais. Vamos além da inclusão, buscando criar um ambiente onde as diferenças são celebradas e vistas como um catalisador para a inovação. Seja qual for a sua origem, identidade, orientação ou experiência, você é bem-vindo(a) e valorizado(a) aqui. Promovemos ativamente uma cultura de equidade, respeito mútuo e oportunidades iguais para todos.</p>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Nosso Compromisso com a Diversidade" -->
+                    <img src="../assets/img/misc/diversity_commitment.webp" alt="Mãos de diferentes pessoas se unindo">
+                </div>
+            </div>
+
+            <!-- Bloco de Narrativa: Acolhimento ao Espectro Autista (Imagem Esquerda) -->
+            <div class="narrative-block image-left">
+                <div class="narrative-content">
+                    <h3>Acolhimento ao Espectro Autista</h3>
+                    <p>Temos um compromisso especial com a **inclusão de profissionais no espectro autista**. Reconhecemos as habilidades e talentos únicos que indivíduos autistas trazem para o ambiente de trabalho, como atenção aos detalhes, pensamento lógico, criatividade e dedicação. Nosso objetivo é criar um espaço onde neurodiversos possam prosperar.</p>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Acolhimento ao Espectro Autista" -->
+                    <img src="../assets/img/misc/autism_inclusion.webp" alt="Símbolo do infinito colorido representando neurodiversidade">
+                </div>
+            </div>
+
+            <!-- Bloco de Narrativa: Ambientes Adaptados (Imagem Direita) -->
+            <div class="narrative-block">
+                <div class="narrative-content">
+                    <h3>Ambientes Adaptados</h3>
+                    <p>Para garantir que todos se sintam confortáveis e produtivos, buscamos adaptar nossos espaços. Isso inclui atenção à iluminação, níveis de ruído e layout, minimizando sobrecargas sensoriais. Nosso foco é criar um local de trabalho que respeite as necessidades de cada indivíduo.</p>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Ambientes Adaptados" -->
+                    <img src="../assets/img/misc/adapted_environments.webp" alt="Espaço de trabalho inclusivo e adaptado">
+                </div>
+            </div>
+
+            <!-- Bloco de Narrativa: Comunicação Clara e Direta (Imagem Esquerda) -->
+            <div class="narrative-block image-left">
+                <div class="narrative-content">
+                    <h3>Comunicação Clara e Direta</h3>
+                    <p>Incentivamos uma comunicação transparente e objetiva em todas as interações. Fornecemos instruções claras, feedback direto e canais abertos para diálogo, garantindo que a informação seja acessível e compreendida por todos, promovendo um ambiente de trabalho sem ruídos.</p>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Comunicação Clara e Direta" -->
+                    <img src="../assets/img/misc/clear_communication.webp" alt="Pessoas conversando com balões de fala claros">
+                </div>
+            </div>
+
+            <!-- Bloco de Narrativa: Flexibilidade e Compreensão (Imagem Direita) -->
+            <div class="narrative-block">
+                <div class="narrative-content">
+                    <h3>Flexibilidade e Compreensão</h3>
+                    <p>Entendemos que cada pessoa tem suas particularidades. Oferecemos flexibilidade e compreensão para apoiar rotinas adaptadas e atender às necessidades individuais, promovendo o bem-estar e permitindo que nossos colaboradores conciliem vida pessoal e profissional de forma saudável.</p>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Flexibilidade e Compreensão" -->
+                    <img src="../assets/img/misc/flexibility.webp" alt="Pessoa trabalhando de forma flexível">
+                </div>
+            </div>
+
+            <!-- Bloco de Narrativa: Cultura de Respeito (Imagem Esquerda) -->
+            <div class="narrative-block image-left">
+                <div class="narrative-content">
+                    <h3>Cultura de Respeito</h3>
+                    <p>Na Nesctech, promovemos uma cultura onde a empatia e o respeito são a base de todas as interações. Investimos em conscientização e educação contínua para que toda a equipe compreenda e valorize a neurodiversidade, criando um ambiente seguro e inclusivo para todos.</p>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Cultura de Respeito" -->
+                    <img src="../assets/img/misc/respect_culture.webp" alt="Grupo de pessoas diversas se abraçando">
+                </div>
+            </div>
+
+            <!-- Bloco de Narrativa: Oportunidades de Desenvolvimento (Imagem Direita) -->
+            <div class="narrative-block">
+                <div class="narrative-content">
+                    <h3>Oportunidades de Desenvolvimento</h3>
+                    <p>Acreditamos no potencial de cada um. Oferecemos programas de mentoria, treinamentos e caminhos de crescimento profissional que valorizam as fortalezas individuais e permitem que todos os colaboradores alcancem seus objetivos de carreira, construindo um futuro promissor.</p>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Oportunidades de Desenvolvimento" -->
+                    <img src="../assets/img/misc/development_opportunities.webp" alt="Pessoa subindo uma escada de crescimento profissional">
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SEÇÃO COMO CONTRATAMOS ==================== -->
+        <section class="how-we-hire-section services-section">
+            <h2>Como Contratamos</h2>
+            
+            <!-- Processo de Candidatura -->
+            <div class="how-we-hire-block">
+                <h3>Processo de Candidatura</h3>
+                <p>Você se interessou por alguma de nossas oportunidades e quer se juntar à Nesctech? É simples! Confira o passo-a-passo abaixo:</p>
+                <ol>
+                    <li>Clique em “Me candidatar” na página da vaga escolhida.</li>
+                    <li>Cadastre-se no nosso Portal de Talentos.</li>
+                    <li>Após o cadastro, preencha seu perfil com dados como experiências, escolaridade entre outros.</li>
+                    <li>Pronto! Sua candidatura está completa. Fique atento ao seu e-mail ou acesse esse portal para acompanhar o andamento do processo seletivo e boa sorte!</li>
+                </ol>
+                <p>Seu perfil ficará salvo no nosso banco de talentos, disponível para análise por nossa equipe de recrutamento que entrará em contato caso surjam mais vagas compatíveis.</p>
+                <p>Se você não encontrou a vaga ideal ainda, cadastre seu perfil no banco de talentos para receber notificações sobre vagas futuras.</p>
+            </div>
+
+            <!-- Processo para Vendedores e Promotores -->
+            <div class="how-we-hire-block">
+                <h3>Processo para Vendedores e Promotores</h3>
+                <p>Para vagas de Vendedores e Promotores, nosso processo é ágil, com o objetivo de ter você na equipe em pouco tempo!</p>
+                <div class="process-steps">
+                    <div class="step-item">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Candidatura</span>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                    <div class="step-item">
+                        <i class="fas fa-users"></i>
+                        <span>Entrevista RH & Gestor</span>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                    <div class="step-item">
+                        <i class="fas fa-notes-medical"></i>
+                        <span>Exames Admissionais</span>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                    <div class="step-item">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Envio de Documentos</span>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                    <div class="step-item">
+                        <i class="fas fa-handshake-angle"></i>
+                        <span>Contratação</span>
+                    </div>
+                </div>
+                <p class="note">*Em média, até 10 dias para contratação.</p>
+            </div>
+
+            <!-- Etapas para Demais Cargos -->
+            <div class="how-we-hire-block">
+                <h3>Etapas para Demais Cargos</h3>
+                <p>Para outros cargos, o processo pode incluir etapas adicionais para garantir o melhor fit com a Nesctech.</p>
+                <div class="process-steps">
+                    <div class="step-item">
+                        <i class="fas fa-edit"></i>
+                        <span>Inscrição & Testes</span>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                    <div class="step-item">
+                        <i class="fas fa-search"></i>
+                        <span>Triagem de Perfil</span>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                    <div class="step-item">
+                        <i class="fas fa-file-invoice"></i>
+                        <span>Análise de Currículo</span>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                    <div class="step-item">
+                        <i class="fas fa-comments"></i>
+                        <span>Entrevistas</span>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                    <div class="step-item">
+                        <i class="fas fa-users-line"></i>
+                        <span>Dinâmicas / Painéis</span>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                    <div class="step-item">
+                        <i class="fas fa-clipboard-check"></i>
+                        <span>Avaliações</span>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                    <div class="step-item">
+                        <i class="fas fa-money-check-alt"></i>
+                        <span>Proposta</span>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                    <div class="step-item">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Contratação</span>
+                    </div>
+                </div>
+                <p class="note">*Pode levar em média 30 dias, dependendo da complexidade.</p>
+            </div>
+        </section>
+
+        <!-- ==================== SEÇÃO PROGRAMA DE TALENTOS ==================== -->
+        <section class="talent-program-section services-section">
+            <h2>Programa de Talentos Nesctech</h2>
+            
+            <!-- Bloco de Narrativa: O Programa de Talentos Nesctech (Imagem Direita) -->
+            <div class="narrative-block">
+                <div class="narrative-content">
+                    <h3>O Programa de Talentos Nesctech</h3>
+                    <p>Nosso programa foi cuidadosamente desenhado para nutrir o potencial de cada indivíduo, oferecendo experiências práticas, mentoria e oportunidades de aprendizado contínuo. Queremos que você cresça conosco, contribuindo com novas ideias e impulsionando a inovação em um dos setores mais dinâmicos do mercado.</p>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "O Programa de Talentos Nesctech" -->
+                    <img src="../assets/img/misc/talent_program.webp" alt="Jovens profissionais em um ambiente de aprendizado">
+                </div>
+            </div>
+
+            <!-- Bloco de Narrativa: Jovem Aprendiz (Imagem Esquerda) -->
+            <div class="narrative-block image-left">
+                <div class="narrative-content">
+                    <h3>Jovem Aprendiz</h3>
+                    <p>Se você está em busca de sua primeira experiência profissional, o programa Jovem Aprendiz da Nesctech é para você! Cumprimos a lei e acreditamos na formação de novos talentos, oferecendo um ambiente de aprendizado estruturado, acompanhamento de perto e a chance de aplicar conhecimentos na prática desde cedo.</p>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Jovem Aprendiz" -->
+                    <img src="../assets/img/misc/young_apprentice.webp" alt="Jovem aprendendo em um ambiente de trabalho">
+                </div>
+            </div>
+
+            <!-- Bloco de Narrativa: Estágio e Trainee (Imagem Direita) -->
+            <div class="narrative-block">
+                <div class="narrative-content">
+                    <h3>Estágio e Trainee</h3>
+                    <p>Para estudantes universitários e recém-formados, nossos programas de Estágio e Trainee são uma oportunidade de mergulhar no mundo da tecnologia. Desenvolva suas habilidades, participe de projetos desafiadores e seja mentorado por profissionais experientes que te guiarão em sua jornada rumo ao sucesso.</p>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Estágio e Trainee" -->
+                    <img src="../assets/img/misc/intern_trainee.webp" alt="Estudantes em treinamento">
+                </div>
+            </div>
+
+            <!-- Bloco de Narrativa: Mentoria e Desenvolvimento Contínuo (Imagem Esquerda) -->
+            <div class="narrative-block image-left">
+                <div class="narrative-content">
+                    <h3>Mentoria e Desenvolvimento Contínuo</h3>
+                    <p>Valorizamos o crescimento constante. Por isso, todos os participantes do nosso Programa de Talentos têm acesso a sessões de mentoria com líderes da empresa, workshops práticos e trilhas de desenvolvimento personalizadas. Investimos em você para que alcance seu máximo potencial.</p>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Mentoria e Desenvolvimento Contínuo" -->
+                    <img src="../assets/img/misc/mentorship.webp" alt="Pessoa sendo mentorada por um líder">
+                </div>
+            </div>
+
+            <!-- Bloco de Narrativa: Nosso Ambiente e Cultura (Imagem Direita) -->
+            <div class="narrative-block">
+                <div class="narrative-content">
+                    <h3>Nosso Ambiente e Cultura</h3>
+                    <p>Na Nesctech, você encontrará um ambiente colaborativo, inclusivo e que valoriza a diversidade de ideias. Incentivamos a proatividade, a criatividade e o trabalho em equipe, proporcionando um clima onde você se sentirá à vontade para inovar e propor soluções.</p>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Nosso Ambiente e Cultura" -->
+                    <img src="../assets/img/misc/culture_environment.webp" alt="Ambiente de trabalho colaborativo e moderno">
+                </div>
+            </div>
+
+            <!-- Bloco de Narrativa: Quem Buscamos? (Imagem Esquerda) -->
+            <div class="narrative-block image-left">
+                <div class="narrative-content">
+                    <h3>Quem Buscamos?</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Jovens com curiosidade e vontade de aprender.</li>
+                        <li><i class="fas fa-check-circle"></i> Pessoas proativas e com iniciativa.</li>
+                        <li><i class="fas fa-check-circle"></i> Indivíduos que valorizam o trabalho em equipe.</li>
+                        <li><i class="fas fa-check-circle"></i> Apaixonados por tecnologia e inovação.</li>
+                        <li><i class="fas fa-check-circle"></i> Comprometidos com o próprio desenvolvimento.</li>
+                    </ul>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Quem Buscamos?" -->
+                    <img src="../assets/img/misc/who_we_look_for.webp" alt="Pessoas diversas com balões de pensamento">
+                </div>
+            </div>
+
+            <!-- Bloco de Narrativa: Benefícios do Programa (Imagem Direita) -->
+            <div class="narrative-block">
+                <div class="narrative-content">
+                    <h3>Benefícios do Programa</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Bolsa Auxílio compatível com o mercado.</li>
+                        <li><i class="fas fa-check-circle"></i> Vale-refeição ou alimentação.</li>
+                        <li><i class="fas fa-check-circle"></i> Vale-transporte.</li>
+                        <li><i class="fas fa-check-circle"></i> Plano de saúde e odontológico.</li>
+                        <li><i class="fas fa-check-circle"></i> Seguro de vida.</li>
+                        <li><i class="fas fa-check-circle"></i> Ambiente de trabalho flexível e moderno.</li>
+                        <li><i class="fas fa-check-circle"></i> Oportunidades reais de efetivação.</li>
+                    </ul>
+                </div>
+                <div class="narrative-image">
+                    <!-- Imagem para "Benefícios do Programa" -->
+                    <img src="../assets/img/misc/program_benefits.webp" alt="Ícones de benefícios como dinheiro, saúde, transporte">
+                </div>
+            </div>
+
+            <div class="call-to-action-block">
+                <h2>Seu Futuro Começa Aqui!</h2>
+                <p>Pronto para impulsionar sua carreira na Nesctech? Confira nossas oportunidades abertas e junte-se ao nosso time de inovadores.</p>
+                <a href="#vagas" class="cta-button">Ver Vagas para Talentos</a>
+            </div>
+        </section>
+
+        <!-- ==================== SEÇÃO PERGUNTAS FREQUENTES ==================== -->
+        <section class="faq-section services-section">
+            <h2>Perguntas Frequentes sobre a Candidatura</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3>Posso me candidatar para a mesma vaga que não fui aprovado anteriormente? <i class="fas fa-chevron-down"></i></h3>
+                    <div class="faq-answer">
+                        <p>Você pode se inscrever apenas uma vez em cada vaga. Mas isso não impede que você se inscreva em vagas semelhantes. Exemplo: Se você foi reprovado na candidatura a uma vaga de Vendedor Pleno, poderá se candidatar a outra vaga de Vendedor Junior. <strong>Dica:</strong> revise todas as suas informações ao se inscrever novamente à vaga.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3>Existem restrições para a realização das candidaturas? <i class="fas fa-chevron-down"></i></h3>
+                    <div class="faq-answer">
+                        <p>Não. Contamos com o programa de Jovens Aprendizes que recebem candidatos a partir de 14 até 24 anos. Além disso, combatemos o etarismo, o preconceito com as pessoas de mais idade, por isso, em todos os outros níveis de vagas são aceitas as inscrições com idade a partir de 18 anos.</p>
+                        <p>Não há limite de vagas em que você pode se inscrever, mas é interessante que você se inscreva em vagas que tenham relação com sua área de formação, habilidades e qualificações, para aumentar as chances de você ser selecionado.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3>O que os recrutadores buscam durante as entrevistas? <i class="fas fa-chevron-down"></i></h3>
+                    <div class="faq-answer">
+                        <p>Nossos recrutadores buscam em primeiro lugar que você se sinta confortável para o bate-papo. É importante que estude sobre nossa empresa. Sinceridade e pontualidade são essenciais para o dia da entrevista. Apresente sua trajetória profissional contando um pouco de suas experiências, habilidades, pontos fortes e pontos fracos. Fique tranquilo, sabemos que muitas vezes o nervosismo fala mais alto, mas nossos recrutadores estão preparados para que o clima seja o mais agradável possível em cada etapa do processo.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3>Quanto tempo demora o processo seletivo? <i class="fas fa-chevron-down"></i></h3>
+                    <div class="faq-answer">
+                        <p>Isso vai depender do tipo de vaga para a qual se inscreveu. Para processos seletivos de vendedor(a) e promotores, em uma média de até 10 dias você já poderá estar trabalhando conosco. Porém, alguns processos administrativos contam com etapas de testes e avaliações, que fazem com que o processo se estenda, podendo levar em média 30 dias, dependendo da complexidade.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3>Tem vagas abertas para pessoas com deficiência? <i class="fas fa-chevron-down"></i></h3>
+                    <div class="faq-answer">
+                        <p>Acreditamos que #DiversidadeEnriquece, por isso em todas as nossas vagas são aceitas as inscrições de profissionais com deficiência.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3>Não localizei nenhuma vaga com o meu perfil. Como posso cadastrar o meu currículo? <i class="fas fa-chevron-down"></i></h3>
+                    <div class="faq-answer">
+                        <p>É possível realizar o cadastro no geral no Portal de Talentos, independente da inscrição em uma vaga específica. <strong>Dica:</strong> Quanto mais completo o seu perfil, mais fácil chegaremos até você em nossas buscas.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3>Posso me candidatar em quantas vagas? <i class="fas fa-chevron-down"></i></h3>
+                    <div class="faq-answer">
+                        <p>Não existe limite de vagas em que você pode se inscrever, mas é interessante que você se inscreva em vagas que tenham relação com sua área de formação, habilidades e qualificações, para aumentar as chances de você ser selecionado.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3>Posso me candidatar para trabalhar de outro país ou cidade? <i class="fas fa-chevron-down"></i></h3>
+                    <div class="faq-answer">
+                        <p>Sim. Nós somos uma empresa totalmente digital.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="call-to-action-block final-cta">
+                <h2>VENHA FAZER PARTE DA NESCTECH</h2>
+                <p>Se você se identificou, inscreva-se! Estamos ansiosos para te conhecer. Junte-se a nós na Nesctech e ajude a construir um futuro melhor com tecnologia e inovação para todos.</p>
+                <a href="#vagas" class="cta-button">Ver Todas as Vagas</a>
+            </div>
+        </section>
+
+        <!-- ==================== FOOTER (RODAPÉ) ==================== -->
+        <footer class="nesctech-footer">
+            <p>&copy; 2025 Nesctech. Todos os direitos reservados. | Desenvolvido com inovação e paixão.</p>
+        </footer>
+
+    </div> <!-- Fim do .page-wrapper -->
+
+    <script>
+        // JavaScript para funcionalidade de sanfona (accordion) do FAQ
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item h3');
+
+            faqItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const parent = item.parentElement;
+                    // Fecha outros itens abertos, se desejar que apenas um fique aberto por vez
+                    // document.querySelectorAll('.faq-item.active').forEach(activeItem => {
+                    //     if (activeItem !== parent) {
+                    //         activeItem.classList.remove('active');
+                    //         activeItem.querySelector('.faq-answer').style.maxHeight = '0';
+                    //     }
+                    // });
+
+                    parent.classList.toggle('active');
+                    const answer = parent.querySelector('.faq-answer');
+                    if (parent.classList.contains('active')) {
+                        answer.style.maxHeight = answer.scrollHeight + 'px'; // Ajusta a altura para o conteúdo
+                    } else {
+                        answer.style.maxHeight = '0';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

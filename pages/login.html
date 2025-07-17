@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nesctech - Acesso aos Sistemas</title>
+    <!-- Importa a fonte Lato do Google Fonts para um visual moderno e legível -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome para os ícones dos botões -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Variáveis de Cores e Fontes para facilitar a personalização */
+        :root {
+            --nesctech-primary-blue: #002D62; /* Azul escuro principal da Nesctech (para header e detalhes) */
+            --nesctech-logo-blue: #002D62; /* Cor do logo */
+
+            --nesctech-text-light: #ffffff; /* Texto claro (usado no header e hero) */
+            --section-bg-light: #f9f9f9; /* Fundo claro para seções de conteúdo */
+            --color-dark-text: #2a2a2a; /* Texto escuro geral */
+            --color-heading-text: #1a1a1a; /* Títulos de seção */
+            --color-link-text: #333333; /* Links do menu */
+            --color-link-hover: var(--nesctech-primary-blue); /* Links do menu ao passar o mouse */
+
+            --footer-bg: #1a1a1a; /* Fundo do rodapé */
+            --footer-text: #cccccc; /* Texto do rodapé */
+
+            --font-family-base: "Lato", sans-serif;
+
+            /* Cores dos botões de sistema, inspiradas na imagem */
+            --btn-agro: #4CAF50; /* Verde */
+            --btn-business: #3F51B5; /* Azul índigo */
+            --btn-beauty: #E91E63; /* Rosa */
+            --btn-pet: #607D8B; /* Azul acinzentado */
+            --btn-food: #FF9800; /* Laranja */
+            --btn-imoveis: #795548; /* Marrom */
+            --btn-clinicas: #9C27B0; /* Roxo */
+            --btn-vet: #FFEB3B; /* Amarelo */
+            --btn-med: #00BCD4; /* Ciano */
+            --btn-posto: #FF5722; /* Laranja avermelhado */
+            --btn-market: #F44336; /* Vermelho */
+            --btn-varejo: #2196F3; /* Azul */
+            --btn-shopcenter: #7B1FA2; /* Roxo escuro */
+            --btn-tech: #8BC34A; /* Verde claro */
+            --btn-advoc: #FFC107; /* Âmbar */
+        }
+
+        /* Reset CSS abrangente */
+        * {
+            box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura total */
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%; /* Garante que body e html ocupem 100% da altura da viewport */
+            overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+            overflow-y: auto; /* Permite rolagem vertical quando necessário */
+            font-family: var(--font-family-base);
+            line-height: 1.6;
+            color: var(--color-dark-text);
+            display: flex; /* Define o body como um contêiner flex */
+            flex-direction: column; /* Organiza os filhos em coluna */
+            min-height: 100vh; /* Garante que o body ocupe no mínimo 100% da altura da viewport */
+        }
+
+        /* Container centralizado para conteúdo */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===================================================================== */
+        /* ==================== HEADER (CABEÇALHO) =========================== */
+        /* ===================================================================== */
+
+        .nesctech-header {
+            background-color: var(--nesctech-text-light);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: sticky; /* Fixa o header no topo ao rolar */
+            top: 0;
+            z-index: 1000; /* Garante que fique acima de outros elementos */
+        }
+
+        .nesctech-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--nesctech-logo-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nesctech-logo img {
+            height: 45px; /* Ajustado para caber no header, mantendo proporção */
+            width: auto; /* Permite que a largura se ajuste automaticamente */
+            max-width: 150px; /* Limita a largura máxima para logos muito grandes */
+            margin-right: 8px;
+            object-fit: contain;
+        }
+
+        .nesctech-nav-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px; /* Espaçamento entre os itens do menu */
+        }
+
+        .nesctech-nav-menu ul li a {
+            text-decoration: none;
+            color: var(--color-link-text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            white-space: nowrap; /* Evita quebra de linha em itens do menu */
+        }
+
+        .nesctech-nav-menu ul li a:hover,
+        .nesctech-nav-menu ul li a.active {
+            color: var(--color-link-hover);
+        }
+
+        .nesctech-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Espaço entre Login e WhatsApp */
+        }
+
+        .nesctech-login-btn {
+            background-color: transparent;
+            border: 1px solid var(--nesctech-primary-blue);
+            color: var(--nesctech-primary-blue);
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nesctech-login-btn:hover {
+            background-color: var(--nesctech-primary-blue);
+            color: var(--nesctech-text-light);
+        }
+
+        .nesctech-whatsapp-btn {
+            background-color: #25D366; /* Cor do WhatsApp */
+            color: var(--nesctech-text-light);
+            border-radius: 50%; /* Botão redondo */
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .nesctech-whatsapp-btn:hover {
+            background-color: #1DA851;
+            transform: translateY(-2px);
+        }
+
+        /* ===================================================================== */
+        /* ==================== SEÇÃO DE SELEÇÃO DE SISTEMAS ================= */
+        /* ===================================================================== */
+
+        .system-selection-section {
+            flex-grow: 1; /* Permite que a seção ocupe o espaço restante */
+            background-color: var(--section-bg-light);
+            padding: 40px 20px; /* Ajustado o padding vertical */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .system-selection-section h1 {
+            font-size: 2.0rem; /* REDUZIDO: Tamanho do título */
+            font-weight: 700;
+            color: var(--color-heading-text);
+            margin-bottom: 25px; /* REDUZIDO: Margem inferior do título */
+            text-transform: uppercase;
+        }
+
+        .system-buttons-grid {
+            /* AJUSTADO: Volta para auto-fit com minmax menor para mais colunas e blocos menores */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Permite mais colunas compactas */
+            gap: 15px; /* Espaçamento entre os botões */
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .system-button {
+            background-color: var(--color-white);
+            border-radius: 10px;
+            padding: 12px 8px; /* REDUZIDO: Padding interno dos botões */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--nesctech-text-light); /* Cor do texto no botão */
+            font-weight: 600;
+            font-size: 0.9rem; /* REDUZIDO: Tamanho da fonte do texto do botão */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            min-height: 100px; /* REDUZIDO: Altura mínima para os botões */
+        }
+
+        .system-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .system-button .icon {
+            font-size: 2.2rem; /* REDUZIDO: Tamanho do ícone */
+            margin-bottom: 8px; /* REDUZIDO: Margem inferior do ícone */
+            color: var(--nesctech-text-light); /* Cor do ícone */
+        }
+
+        /* Cores de fundo para cada botão, baseadas na imagem */
+        .system-button.agro { background-color: var(--btn-agro); }
+        .system-button.business { background-color: var(--btn-business); }
+        .system-button.beauty { background-color: var(--btn-beauty); }
+        .system-button.pet { background-color: var(--btn-pet); }
+        .system-button.food { background-color: var(--btn-food); }
+        .system-button.imoveis { background-color: var(--btn-imoveis); }
+        .system-button.clinicas { background-color: var(--btn-clinicas); }
+        .system-button.vet { background-color: var(--btn-vet); }
+        .system-button.med { background-color: var(--btn-med); }
+        .system-button.posto { background-color: var(--btn-posto); }
+        .system-button.market { background-color: var(--btn-market); }
+        .system-button.varejo { background-color: var(--btn-varejo); }
+        .system-button.shopcenter { background-color: var(--btn-shopcenter); }
+        .system-button.tech { background-color: var(--btn-tech); }
+        .system-button.advoc { background-color: var(--btn-advoc); }
+
+        /* ===================================================================== */
+        /* ==================== FOOTER (RODAPÉ) ============================== */
+        /* ===================================================================== */
+
+        .nesctech-footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: auto; /* Empurra o rodapé para o final da página */
+        }
+
+        .nesctech-footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* ===================================================================== */
+        /* ==================== RESPONSIVIDADE GERAL ========================= */
+        /* ===================================================================== */
+
+        @media (max-width: 1200px) {
+            .system-buttons-grid {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); /* Ajuste para telas grandes/médias */
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .nesctech-header {
+                padding: 15px 20px;
+            }
+            .nesctech-nav-menu ul {
+                gap: 20px;
+            }
+            .system-selection-section h1 {
+                font-size: 1.8rem; /* Ajuste para telas menores */
+            }
+            .system-buttons-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* 3 ou 4 colunas em telas menores */
+                gap: 12px;
+            }
+            .system-button {
+                padding: 10px 8px;
+                min-height: 90px;
+            }
+            .system-button .icon {
+                font-size: 2rem;
+                margin-bottom: 6px;
+            }
+            .system-button span {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nesctech-header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+            .nesctech-nav-menu {
+                width: 100%;
+                margin-top: 15px;
+            }
+            .nesctech-nav-menu ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .nesctech-header-actions {
+                margin-top: 15px;
+                width: 100%;
+                justify-content: center;
+            }
+            .nesctech-login-btn {
+                flex-grow: 1;
+                text-align: center;
+            }
+            .system-selection-section {
+                padding: 30px 15px; /* Reduz o padding para telas menores */
+            }
+            .system-selection-section h1 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            .system-buttons-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* 2 ou 3 colunas em tablets/celulares maiores */
+                gap: 10px;
+            }
+            .system-button {
+                min-height: 80px;
+                font-size: 0.8rem;
+                padding: 10px 5px;
+            }
+            .system-button .icon {
+                font-size: 1.8rem;
+                margin-bottom: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nesctech-logo {
+                font-size: 1.5rem;
+            }
+            .nesctech-nav-menu ul {
+                gap: 10px;
+                font-size: 0.85rem;
+            }
+            .system-selection-section {
+                padding: 20px 10px;
+            }
+            .system-selection-section h1 {
+                font-size: 1.2rem;
+            }
+            .system-buttons-grid {
+                grid-template-columns: 1fr; /* Uma coluna em celulares */
+                max-width: 200px; /* Limita a largura do botão */
+            }
+            .system-button {
+                padding: 8px 5px;
+                min-height: 70px;
+                font-size: 0.75rem;
+            }
+            .system-button .icon {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- ==================== HEADER (CABEÇALHO) ==================== -->
+        <header class="nesctech-header">
+            <a href="../index.html" class="nesctech-logo">
+                <img src="../assets/img/logo/logo.png" alt="Nesctech Logo" width="320" height="132">
+            </a>
+            <nav class="nesctech-nav-menu">
+                <ul>
+                    <li><a href="pages/para-voce.html">PARA VOCÊ</a></li>
+                    <li><a href="pages/para-seu-negocio.html">PARA SEU NEGÓCIO</a></li>
+                    <li><a href="pages/agro.html">AGRO</a></li>
+                    <li><a href="pages/corporate.html">CORPORATE</a></li>
+                    <li><a href="pages/setor-publico.html">SETOR PÚBLICO</a></li>
+                    <li><a href="pages/nossa-gente.html">NOSSA GENTE</a></li>
+                    <li><a href="pages/contato.html">CONTATO</a></li>
+                </ul>
+            </nav>
+            <div class="nesctech-header-actions">
+                <a href="login.html" class="nesctech-login-btn">LOGIN</a>
+                <!-- NÚMERO DO WHATSAPP ATUALIZADO -->
+                <a href="https://wa.me/5594974007800" target="_blank" class="nesctech-whatsapp-btn" aria-label="Fale conosco pelo WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- ==================== SEÇÃO DE SELEÇÃO DE SISTEMAS ==================== -->
+        <section class="system-selection-section">
+            <h1>ESCOLHA QUAL SISTEMA DESEJA ACESSAR.</h1>
+            <div class="system-buttons-grid">
+                <a href="https://nesctech.appnfe.com/" target="_blank" class="system-button agro">
+                    <i class="icon fas fa-tractor"></i>
+                    <span>Login Agro</span>
+                </a>
+                <a href="https://sistema.nesctech.com.br/" target="_blank" class="system-button business">
+                    <i class="icon fas fa-briefcase"></i>
+                    <span>Login Business</span>
+                </a>
+                <a href="https://app.sistemanesctech.com.br/" target="_blank" class="system-button beauty">
+                    <i class="icon fas fa-cut"></i>
+                    <span>Login Beauty</span>
+                </a>
+                <a href="https://app.nesctech.com.br/" target="_blank" class="system-button pet">
+                    <i class="icon fas fa-paw"></i>
+                    <span>Login Pet</span>
+                </a>
+                <a href="https://app.nesctech.com.br/" target="_blank" class="system-button food">
+                    <i class="icon fas fa-hamburger"></i>
+                    <span>Login Food</span>
+                </a>
+                <a href="https://app.nesctech.com.br/" target="_blank" class="system-button imoveis">
+                    <i class="icon fas fa-home"></i>
+                    <span>Login Imóveis</span>
+                </a>
+                <a href="https://nesctech.com.br/dev" target="_blank" class="system-button clinicas">
+                    <i class="icon fas fa-clinic-medical"></i>
+                    <span>Login Clínicas</span>
+                </a>
+                <a href="https://nesctech.com.br/dev" target="_blank" class="system-button vet">
+                    <i class="icon fas fa-stethoscope"></i>
+                    <span>Login Vet</span>
+                </a>
+                <a href="https://nesctech.com.br/dev" target="_blank" class="system-button med">
+                    <i class="icon fas fa-user-md"></i>
+                    <span>Login Med</span>
+                </a>
+                <a href="https://nesctech.com.br/dev" target="_blank" class="system-button posto">
+                    <i class="icon fas fa-gas-pump"></i>
+                    <span>Login Posto</span>
+                </a>
+                <a href="https://nesctech.com.br/dev" target="_blank" class="system-button market">
+                    <i class="icon fas fa-shopping-cart"></i>
+                    <span>Login Market</span>
+                </a>
+                <a href="https://nesctech.com.br/dev" target="_blank" class="system-button varejo">
+                    <i class="icon fas fa-shopping-bag"></i>
+                    <span>Login Varejo</span>
+                </a>
+                <a href="https://nesctech.com.br/dev" target="_blank" class="system-button shopcenter">
+                    <i class="icon fas fa-store"></i>
+                    <span>Login ShopCenter</span>
+                </a>
+                <a href="https://nesctech.com.br/dev" target="_blank" class="system-button tech">
+                    <i class="icon fas fa-cogs"></i>
+                    <span>Login Tech</span>
+                </a>
+                <a href="https://nesctech.com.br/dev" target="_blank" class="system-button advoc">
+                    <i class="icon fas fa-balance-scale"></i>
+                    <span>Login Advoc</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- ==================== FOOTER (RODAPÉ) ==================== -->
+        <footer class="nesctech-footer">
+            <p>&copy; 2025 Nesctech. Todos os direitos reservados. | Desenvolvido com inovação e paixão.</p>
+        </footer>
+
+    </div> <!-- Fim do .page-wrapper -->
+</body>
+</html>
